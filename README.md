@@ -12,21 +12,25 @@ This project focuses on reverse engineering and reimagining the core mechanics o
 Please take a lokk into the [GitHub project](https://github.com/users/andreas-volz/projects/1) for StarTS to see what's implemented and what not.
 
 - **Godot Resource Import Process**:  
-  Successfully imports Starcraft’s proprietary data formats into Godot, making them accessible for the engine.  
-
+  Successfully imports Starcraft’s proprietary data formats into Godot, making them accessible for the engine.
+  
 - **Data Viewer** ("DatViewer"):  
   A viewer tool with similar functionality to the popular **DatEdit**, allowing exploration of the imported Starcraft data.  
   Note: The focus is only on viewing data, not editing it.  
+
+![DatViewer](https://github.com/user-attachments/assets/da77c583-02bd-429b-8430-35ab7bdb995c)
 
 - **Early Game Implementation**:  
   - Can load maps from Starcraft data files.
   - Place units on the map
   - Units can walk on the terrain with basic terrain navigation.  
 
+![StarTS](https://github.com/user-attachments/assets/9bb45c53-9d63-47d4-b4d5-0c77e723789a)
+
 ### What’s Missing  
 
 - No real gameplay
-- No attacking, no unit collisions, no buildings.  
+- No attacking, no unit collisions 
 - No resource gathering, base building, or AI.
 - No network
 
