@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhb74vvna676a"]
+
+[ext_resource type="Script" path="res://Test/JitterStutterTest.gd" id="1_lv2mi"]
+
+[node name="JitterStutterTest" type="Node2D"]
+script = ExtResource("1_lv2mi")
+
+[node name="Start" type="Marker2D" parent="."]
+position = Vector2(335, 232)

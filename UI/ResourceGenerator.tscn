@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://gaksb3b1ki6"]
+
+[ext_resource type="Script" path="res://UI/ResourceGenerator.gd" id="1_jtap2"]
+
+[node name="ResourceGenerator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jtap2")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "StarTS Resource Generator"
+
+[node name="ConverterPath" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GenerateButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Generate"
+
+[node name="DONE" type="Label" parent="CenterContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0609648, 1, 0, 1)
+text = "DONE"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GenerateButton" to="." method="_on_generate_button_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://31c2ecpesjix"]
+
+[ext_resource type="Script" path="res://Unit.gd" id="1_uuofr"]
+[ext_resource type="Script" path="res://UnitSelection.gd" id="4_lv2yk"]
+[ext_resource type="Script" path="res://LineCircleDrawer.gd" id="5_otpyj"]
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_uuofr")
+
+[node name="UnitSelection" type="Node2D" parent="."]
+visible = false
+script = ExtResource("4_lv2yk")
+
+[node name="Pivot" type="Node" parent="."]
+
+[node name="NavigationPath" type="Line2D" parent="Pivot"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+width = 2.0
+default_color = Color(0, 0.0441802, 1, 1)
+script = ExtResource("5_otpyj")
+circle_color = Color(1, 0, 0, 1)
+
+[node name="MovePath" type="Line2D" parent="Pivot"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+width = 2.0
+default_color = Color(0, 1, 0.0997801, 1)
+script = ExtResource("5_otpyj")

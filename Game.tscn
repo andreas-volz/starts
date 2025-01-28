@@ -1,0 +1,191 @@
+[gd_scene load_steps=13 format=3 uid="uid://duxhrg2i7budg"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_sygbq"]
+[ext_resource type="Script" path="res://UI/GameUIConsole.gd" id="3_d2agw"]
+[ext_resource type="Script" path="res://UI/CmdBtnsGrid.gd" id="3_mftsu"]
+[ext_resource type="Script" path="res://UI/CmdBtns.gd" id="3_wyvac"]
+[ext_resource type="Script" path="res://UI/PortraitVideoPlayer.gd" id="4_hhk5v"]
+[ext_resource type="Script" path="res://UI/Wireframe.gd" id="7_7kfn5"]
+[ext_resource type="Texture2D" uid="uid://bdbob6bkhnahj" path="res://Assets/ui/portrait_border.png" id="7_ivq31"]
+[ext_resource type="Script" path="res://SelectionBox.gd" id="9_2riqd"]
+[ext_resource type="Script" path="res://UnitTileMap.gd" id="9_ntv4h"]
+[ext_resource type="Script" path="res://ViewportCamera.gd" id="11_15k8u"]
+[ext_resource type="Script" path="res://Scroller.gd" id="11_a00ar"]
+
+[sub_resource type="TileSet" id="TileSet_ffjbh"]
+tile_size = Vector2i(8, 8)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_sygbq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUIConsole" type="NinePatchRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+patch_margin_left = 284
+patch_margin_right = 355
+patch_margin_bottom = 480
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("3_d2agw")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/GameUIConsole"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 7
+
+[node name="CmdBtnsGrid" type="GridContainer" parent="CanvasLayer/GameUIConsole/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 7
+columns = 3
+script = ExtResource("3_mftsu")
+
+[node name="CmdBtns1" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns2" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns3" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns4" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns5" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns6" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns7" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns8" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="CmdBtns9" type="Control" parent="CanvasLayer/GameUIConsole/MarginContainer2/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_wyvac")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUIConsole"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -169.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 169
+theme_override_constants/margin_bottom = 15
+
+[node name="PortraitOverlay" type="TextureRect" parent="CanvasLayer/GameUIConsole/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PortraitOverlayClip" type="TextureRect" parent="CanvasLayer/GameUIConsole/MarginContainer/PortraitOverlay"]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 62.0
+offset_bottom = 60.0
+texture = ExtResource("7_ivq31")
+
+[node name="PortraitVideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer/GameUIConsole/MarginContainer/PortraitOverlay/PortraitOverlayClip"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("4_hhk5v")
+
+[node name="PortraitAudioPlayer" type="AudioStreamPlayer" parent="CanvasLayer/GameUIConsole/MarginContainer/PortraitOverlay/PortraitOverlayClip/PortraitVideoPlayer"]
+
+[node name="MinimapContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_left = 8.0
+offset_top = 351.0
+offset_right = 133.0
+offset_bottom = 476.0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/MinimapContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(125, 125)
+render_target_update_mode = 4
+
+[node name="MinimapCamera" type="Camera2D" parent="CanvasLayer/MinimapContainer/SubViewport"]
+anchor_mode = 0
+zoom = Vector2(0.04, 0.04)
+
+[node name="Wireframe" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("7_7kfn5")
+centered = true
+
+[node name="MapContainer" type="Node2D" parent="."]
+
+[node name="UnitsContainer" type="Node2D" parent="."]
+
+[node name="SelectionBox" type="Node2D" parent="."]
+script = ExtResource("9_2riqd")
+
+[node name="UnitTileMap" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_ffjbh")
+script = ExtResource("9_ntv4h")
+
+[node name="ViewportCamera" type="Camera2D" parent="."]
+position = Vector2(724, 1205)
+anchor_mode = 0
+limit_left = 0
+limit_top = 0
+script = ExtResource("11_15k8u")
+
+[node name="Scroller" type="Node2D" parent="."]
+script = ExtResource("11_a00ar")
+
+[node name="ScrollTimer" type="Timer" parent="Scroller"]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="scroll_viewport" from="Scroller" to="ViewportCamera" method="_on_scroller_scroll_viewport"]
+[connection signal="timeout" from="Scroller/ScrollTimer" to="Scroller" method="_on_scroll_timer_timeout"]

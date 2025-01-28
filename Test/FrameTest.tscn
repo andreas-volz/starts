@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://stc1o0irmvri"]
+
+[node name="FrameTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(121, 54)
+hframes = 17
+vframes = 5
+frame = 26

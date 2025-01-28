@@ -1,0 +1,298 @@
+[gd_scene load_steps=11 format=3 uid="uid://hgm5x3uiyasi"]
+
+[ext_resource type="Script" path="res://DatViewer/DatViewer.gd" id="1_vvxq5"]
+[ext_resource type="Script" path="res://DatViewer/DatList.gd" id="2_7v6ud"]
+[ext_resource type="Script" path="res://DatViewer/PropertyTree.gd" id="2_jx8mq"]
+[ext_resource type="Texture2D" uid="uid://c3abxi1dy7nwy" path="res://Assets/ui/Play.svg" id="3_1vqn5"]
+[ext_resource type="PackedScene" uid="uid://bcga2u055btkl" path="res://DatViewer/TreeFinderControl.tscn" id="3_5v2yp"]
+[ext_resource type="Script" path="res://UI/CmdBtns.gd" id="3_15g1o"]
+[ext_resource type="Script" path="res://UI/Wireframe.gd" id="4_ca8k3"]
+[ext_resource type="Script" path="res://UI/CmdBtnsGrid.gd" id="6_l2kcr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jiab"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rdkxs"]
+bg_color = Color(0.452479, 0.452479, 0.452479, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.167356, 0.167356, 0.167356, 1)
+border_blend = true
+
+[node name="DatViewer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vvxq5")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="DatList" type="Tree" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/title_button_font_size = 12
+hide_folding = true
+hide_root = true
+script = ExtResource("2_7v6ud")
+
+[node name="TreeFinderControl" parent="MarginContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("tree_finder") instance=ExtResource("3_5v2yp")]
+layout_mode = 2
+tree_finder = NodePath("../DatList")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jiab")
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rdkxs")
+
+[node name="MainStage" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MainStage"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UnitPivot" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MainStage"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="RotateButton" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rotate"
+
+[node name="TeamContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/TeamContainer"]
+layout_mode = 2
+text = "Team:"
+
+[node name="TeamColor" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/TeamContainer"]
+layout_mode = 2
+max_value = 7.0
+
+[node name="CmdBtnsContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CmdBtnsContainer"]
+layout_mode = 2
+
+[node name="CmdBtns" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CmdBtnsContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtnsSpin" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CmdBtnsContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 5.0
+prefix = "Color:"
+
+[node name="WireframeContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Wireframe1" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_ca8k3")
+
+[node name="Wireframe2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_ca8k3")
+
+[node name="Wireframe3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_ca8k3")
+
+[node name="WireframeSpin" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+prefix = "WF:"
+
+[node name="ShildsSpin" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+prefix = "SH:"
+
+[node name="AnimationListContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AnimationList" type="Tree" parent="MarginContainer/HBoxContainer/VBoxContainer/AnimationListContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/title_button_font_size = 12
+hide_root = true
+
+[node name="OpcodeList" type="Tree" parent="MarginContainer/HBoxContainer/VBoxContainer/AnimationListContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+hide_root = true
+
+[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+icon = ExtResource("3_1vqn5")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CmdBtnsGrid" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+script = ExtResource("6_l2kcr")
+
+[node name="CmdBtns1" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns5" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns6" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns7" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns8" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="CmdBtns9" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/CenterContainer/CmdBtnsGrid"]
+layout_mode = 2
+script = ExtResource("3_15g1o")
+
+[node name="PropertyVBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CategorySelector" type="OptionButton" parent="MarginContainer/HBoxContainer/PropertyVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PropertyTree" type="Tree" parent="MarginContainer/HBoxContainer/PropertyVBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/title_button_font_size = 14
+columns = 2
+column_titles_visible = true
+hide_root = true
+script = ExtResource("2_jx8mq")
+
+[node name="TreeFinderControl" parent="MarginContainer/HBoxContainer/PropertyVBoxContainer" node_paths=PackedStringArray("tree_finder") instance=ExtResource("3_5v2yp")]
+layout_mode = 2
+tree_finder = NodePath("../PropertyTree")
+
+[node name="RotateTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer2/DatList" to="." method="_on_dat_list_item_selected"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/RotateButton" to="." method="_on_rotate_button_toggled"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/TeamContainer/TeamColor" to="." method="_on_team_color_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CmdBtnsContainer/VBoxContainer/CmdBtnsSpin" to="." method="_on_cmd_btns_spin_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer/WireframeSpin" to="." method="_on_wireframe_spin_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/WireframeContainer/VBoxContainer/ShildsSpin" to="." method="_on_shilds_spin_value_changed"]
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer/AnimationListContainer/AnimationList" to="." method="_on_animation_list_item_selected"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/PropertyVBoxContainer/CategorySelector" to="." method="_on_category_selector_item_selected"]
+[connection signal="button_clicked" from="MarginContainer/HBoxContainer/PropertyVBoxContainer/PropertyTree" to="." method="_on_property_tree_button_clicked"]
+[connection signal="timeout" from="RotateTimer" to="." method="_on_rotate_timer_timeout"]

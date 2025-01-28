@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://tde6uq0eaohn"]
+
+[ext_resource type="Script" path="res://Test/DatStructureTest.gd" id="1_3ejko"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xem3u"]
+
+[node name="DatStructureTest" type="Node2D"]
+script = ExtResource("1_3ejko")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 635.0
+offset_bottom = 478.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xem3u")

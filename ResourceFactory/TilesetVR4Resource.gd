@@ -1,0 +1,2 @@
+class_name TilesetVR4Resource
+extends TileSet
