@@ -23,6 +23,9 @@ Please take a look into the [GitHub project](https://github.com/users/andreas-vo
 - **Early Game Implementation**:  
   - Can load maps from Starcraft data files.
   - Place units on the map
+  - Show wireframes
+  - Show portrait videos
+  - Play unit ready sounds
   - Units can walk on the terrain with basic terrain navigation.  
 
 ![StarTS](https://github.com/user-attachments/assets/9bb45c53-9d63-47d4-b4d5-0c77e723789a)
