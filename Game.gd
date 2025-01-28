@@ -42,7 +42,7 @@ func _ready() -> void:
 		
 	var unit
 	# *4 because place a unit on a Megatile coordinate to test the code below, later in Chk is the Minitile position
-	unit = create_unit(1, Vector2i(30, 42) * 4)
+	unit = create_unit(106, Vector2i(30, 42) * 4)
 	unit = create_unit(0, Vector2i(30, 46) * 4)
 	unit = create_unit(3, Vector2i(30, 47) * 4)
 	unit = create_unit(15, Vector2i(25, 40) * 4)
