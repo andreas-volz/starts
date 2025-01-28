@@ -9,7 +9,7 @@ This project focuses on reverse engineering and reimagining the core mechanics o
 
 ### What’s Implemented  
 
-Please take a lokk into the [GitHub project](https://github.com/users/andreas-volz/projects/1) for StarTS to see what's implemented and what not.
+Please take a look into the [GitHub project](https://github.com/users/andreas-volz/projects/1) for StarTS to see what's implemented and what not.
 
 - **Godot Resource Import Process**:  
   Successfully imports Starcraft’s proprietary data formats into Godot, making them accessible for the engine.
